@@ -46,7 +46,7 @@ Use the copy function below to do the following:
 */
 
 function copy(arr){
-    const arrCopy = arr
+    const arrCopy = [...arr]
     return arrCopy
 }    
 
@@ -165,8 +165,15 @@ Use the filterByWord function below to do the following:
 */
 
 function filterByWord(arr, flavor){
-    return arr.filter(el => el.includes(flavor))
+    const newArr = []
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].includes(flavor)) newArr.push(arr[i])
+    }
+    return newArr
 }
+
+
 
 
 /* 💪💪💪💪💪🧁🍦🍨 STRETCH 🍨🍦🍫💪💪💪💪💪*/ 
@@ -183,9 +190,15 @@ Use the getAverageWordLength function below to do the following:
 
 function getAverageWordLength(arr){
     let totalWords = 0
-    arr.forEach(el => totalWords += el.split(' ').length)
+
+    for (let i = 0; i < arr.length; i++) {
+        totalWords += arr[i].split(' ').length
+    }
+
     return totalWords / arr.length
 }
+
+// console.log(getAverageWordLength(originalFlavors))
 
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪
@@ -207,7 +220,6 @@ function getRandomFlavors(arr1, arr2, arr3, arr4){
     for (let i = 0; i < 31; i++) {
         let index = Math.floor(Math.random() * allFlavors.length)
         randomFlavors.push(allFlavors[index])
-        console.log(randomFlavors)
         allFlavors.splice(index, 1)
     }
     return randomFlavors
